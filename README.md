@@ -15,14 +15,14 @@
 
 ## Screencasts
 
-![](https://raw.githubusercontent.com/mobily/markdown-live/master/screencasts/gif1.gif)
+![](https://raw.githubusercontent.com/twisty/markdown-live/master/screencasts/gif1.gif)
 
-![](https://raw.githubusercontent.com/mobily/markdown-live/master/screencasts/gif2.gif)
+![](https://raw.githubusercontent.com/twisty/markdown-live/master/screencasts/gif2.gif)
 
 ## Installation
 
 ```shell
-$ npm install -g markdown-live
+$ npm install -g twisty/markdown-live
 ```
 
 ## Usage
