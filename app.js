@@ -31,7 +31,8 @@
                 verbose: false,
                 help: false,
                 file: false,
-                socket: 'http://localhost:2304'
+                socket: 'http://localhost:2304',
+                depth: 0
             },
             log: function(message){
                 if (!this.options.verbose) return;
@@ -80,12 +81,12 @@
                 var name = path.basename(file),
                     dir = file.replace(name, '');
 
-                return { 
-                    name: name, 
+                return {
+                    name: name,
                     dir: dir,
-                    path: file, 
+                    path: file,
                     markdown: data,
-                    content: Markdown(data, { renderer: renderer })
+                    content: Markdown(data, { renderer: renderer, sanitize: true })
                 }
             },
             renderer: function(){
@@ -120,7 +121,7 @@
              *  @constructor
              */
             constructor: MarkdownLive,
-            /** 
+            /**
              *  @method initialize
              *
              *  @param {Object} options
@@ -188,12 +189,31 @@
              */
             prepare: function(){
                 var this_ = this;
+                var maxDepth = this.options.dir.split('/').length + this.options.depth;
 
-                var files = fs.readdirSync(this.options.dir).filter(function(file){
-                    return _.isMD(file);
-                }).map(function(name){
-                    return path.join(this_.options.dir, name);
-                }) || [];
+                var walk = function(dir) {
+                    var results = [];
+                    var walkDepth = dir.split('/').length;
+                    _.log("Checking dir: ", dir, "depth:", walkDepth, "max:", maxDepth);
+                    if (walkDepth <= maxDepth) {
+                        fs.readdirSync(dir).forEach(function(file) {
+                            _.log("Checking file:", path.join(dir, file));
+                            file = path.join(dir, file);
+                            var stat = fs.statSync(file);
+                            if (stat && stat.isDirectory()) {
+                                results = results.concat(walk(file));
+                            } else if (_.isMD(file)) {
+                                _.log("Adding", file);
+                                results.push(file);
+                            }
+                        });
+                    }
+
+                    _.log("Files:", results);
+                    return results;
+                };
+
+                var files = walk(this.options.dir) || [];
 
                 if (this.options.file){
                     this.options.file.split(',').forEach(function(file){
@@ -243,10 +263,10 @@
 
                 dirwatcher.unwatchTree(this.options.dir);
 
-                dirwatcher.watchTree(this.options.dir, { 
+                dirwatcher.watchTree(this.options.dir, {
                     ignoreDirectoryPattern: /.+/,
                     ignoreUnreadableDir: true,
-                    filter: function(file){
+                    filter: function(file, stat){
                         return _.isMD(file);
                     }
                 }, function(file, current, prev){
@@ -273,7 +293,7 @@
              *  @method open
              */
             open: function(){
-                open(this.url); 
+                open(this.url);
             },
             /**
              *  Create websocket events.

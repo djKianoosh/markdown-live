@@ -4,24 +4,29 @@
   "description": "Markdown preview with live update.",
   "main": "app.js",
   "author": "Marcin Dziewulski <hello@mobily.pl>",
+  "contributors": [{
+    "name": "Kianoosh Raika",
+    "email": "djKianoosh@gmail.com"
+  }],
   "license": "MIT",
   "dependencies": {
     "express": "^4.10.4",
-    "filewatcher": "^2.0.1",
+    "filewatcher": "^3.0.1",
     "hamljs": "^0.6.2",
     "marked": "^0.3.2",
     "minimist": "^1.1.0",
     "open": "0.0.5",
     "socket.io": "^1.2.1",
-    "watch": "^0.13.0"
+    "watch": "^1.0.1"
   },
   "devDependencies": {},
   "bin": {
     "mdlive": "bin/mdlive"
   },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/mobily/markdown-live.git"
+    "url": "https://github.com/djKianoosh/markdown-live.git"
   },
   "keywords": [
     "markdown",
@@ -29,7 +34,7 @@
     "preview"
   ],
   "bugs": {
-    "url": "https://github.com/mobily/markdown-live/issues"
+    "url": "https://github.com/djKianoosh/markdown-live/issues"
   },
-  "homepage": "https://github.com/mobily/markdown-live"
+  "homepage": "https://github.com/djKianoosh/markdown-live"
 }

@@ -2,13 +2,14 @@
 
 var path = require('path'),
 	argv = require('minimist')(process.argv.slice(2), {
-        alias: { 
+        alias: {
             h: 'help',
             p: 'port',
             d: 'dir',
-            v: 'verbose', 
+            v: 'verbose',
             f: 'file',
-            s: 'socket'
+            s: 'socket',
+            r: 'depth'
         }
     }),
 	mdlive = require(path.join(__dirname, '..', 'app'))(argv);
