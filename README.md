@@ -15,9 +15,9 @@
 
 ## Screencasts
 
-![](https://raw.githubusercontent.com/twisty/markdown-live/master/screencasts/gif1.gif)
+![](https://raw.githubusercontent.com/djKianoosh/markdown-live/master/screencasts/gif1.gif)
 
-![](https://raw.githubusercontent.com/twisty/markdown-live/master/screencasts/gif2.gif)
+![](https://raw.githubusercontent.com/djKianoosh/markdown-live/master/screencasts/gif2.gif)
 
 ## Installation
 
@@ -64,7 +64,7 @@ OPTIONS:
   -p, --port         Specifies the port to use (default: 2304).
   -v, --verbose      Provides debug messages.
   -s, --socket       Specifies the socket.io hostname or IP address (default: http://localhost)
-  -r, --depth        -r, --depth        Depth to recurse (default: 0).
+  -r, --depth        Depth to recurse (default: 0).
 ```
 
 ```shell
