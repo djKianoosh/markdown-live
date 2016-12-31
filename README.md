@@ -22,7 +22,7 @@
 ## Installation
 
 ```shell
-$ npm install -g twisty/markdown-live
+$ npm install -g djKianoosh/markdown-live
 ```
 
 ## Usage
@@ -64,6 +64,7 @@ OPTIONS:
   -p, --port         Specifies the port to use (default: 2304).
   -v, --verbose      Provides debug messages.
   -s, --socket       Specifies the socket.io hostname or IP address (default: http://localhost)
+  -r, --depth        -r, --depth        Depth to recurse (default: 0).
 ```
 
 ```shell
@@ -88,12 +89,15 @@ AVAILABLE MARKDOWN EXTENSIONS:
 
 ## Contact
 
+### Original Author
+
  - Marcin Dziewulski, <hello@mobily.pl>
  - Twitter: [@marcinmobily](https://twitter.com/marcinmobily)
 
 ## Changelog
 
 ```
+2016-12-31    1.1.0    added support for 'depth' to recurse subdirs
 2015-01-17    1.0.8    added support for alternate filename extensions
                        added support for setting socket.io hostname  or IP address
 2014-12-09    1.0.6    watch *.md files outside the current directory (option: --file)
